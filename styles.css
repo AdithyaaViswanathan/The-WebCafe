@@ -558,6 +558,7 @@ textarea {
     overflow: hidden;
     box-shadow: var(--shadow-md);
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .project-card:hover {

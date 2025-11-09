@@ -194,5 +194,34 @@ document.addEventListener('DOMContentLoaded', () => {
             window.open(wikipediaUrl, '_blank');
         });
     });
+
+    // Make project cards clickable to open Wikipedia
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    // Map project types to Wikipedia pages
+    const projectWikipediaMap = {
+        'ecommerce': 'E-commerce',
+        'task-management': 'Task_management',
+        'weather-dashboard': 'Weather_forecasting'
+    };
+    
+    projectCards.forEach(card => {
+        // Make card look clickable
+        card.style.cursor = 'pointer';
+        
+        card.addEventListener('click', (e) => {
+            // Don't trigger if clicking on links inside the card
+            if (e.target.tagName === 'A') {
+                return;
+            }
+            
+            const projectType = card.getAttribute('data-project');
+            const wikiPage = projectWikipediaMap[projectType] || 'Web_application';
+            
+            // Open Wikipedia in new tab
+            const wikipediaUrl = `https://en.wikipedia.org/wiki/${wikiPage}`;
+            window.open(wikipediaUrl, '_blank');
+        });
+    });
 });
 
